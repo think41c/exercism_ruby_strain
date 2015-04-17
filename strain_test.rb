@@ -48,7 +48,6 @@ class ArrayTest < Minitest::Test
   end
 
   def test_discard_nothing
-    skip
     assert_equal [1, 2, 3], [1, 2, 3].discard { |e| e > 10 }
   end
 
