@@ -13,7 +13,7 @@ class Array
   def discard
     rej_elements = []
     each do |user_array_element|
-      if yield(user_array_element) == false 
+      if yield(user_array_element) == true
         rej_elements << user_array_element
       end
     end
