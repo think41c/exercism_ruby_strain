@@ -48,6 +48,7 @@ class ArrayTest < Minitest::Test
   end
 
   def test_discard_first_and_last
+    skip
     assert_equal [2], [1, 2, 3].discard(&:odd?)
   end
 
@@ -57,7 +58,6 @@ class ArrayTest < Minitest::Test
   end
 
   def test_discard_strings
-    skip
     words = %w(apple zebra banana zombies cherimoya zelot)
     result = words.discard { |word| word.start_with?('z') }
     assert_equal %w(apple banana cherimoya), result
