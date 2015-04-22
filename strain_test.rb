@@ -53,7 +53,6 @@ class ArrayTest < Minitest::Test
   end
 
   def test_discard_neither_first_nor_last
-    skip
     assert_equal [1, 3, 5], [1, 2, 3, 4, 5].discard(&:even?)
   end
 
