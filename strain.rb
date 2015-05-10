@@ -1,27 +1,28 @@
 class Array
 
-  def blocky
+  def keep_and_discard
     kept_elements = []
     each do |user_array_element|
-      if yield(user_array_element)
-        kept_elements << user_array_element
+      if @flag == true 
+        if yield(user_array_element)
+          kept_elements << user_array_element
+        end
+      else
+        if yield(user_array_element) == false
+          kept_elements << user_array_element
+        end
       end
     end
     kept_elements
   end
 
   def keep(&block)
-    blocky(&block)
+    @flag = true
+    keep_and_discard(&block)
   end
 
-  def discard
-    rej_elements = []
-    each do |user_array_element|
-      if yield(user_array_element) == false
-        rej_elements << user_array_element
-      end
-    end
-    rej_elements
+  def discard(&block)
+    @flag = false
+    keep_and_discard(&block)
   end
 end
-p [2,3,4].keep { |e| e < 10 }
